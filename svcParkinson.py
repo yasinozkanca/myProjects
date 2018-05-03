@@ -7,7 +7,6 @@ from sklearn.tree import ExtraTreeClassifier, DecisionTreeClassifier
 from sklearn.neural_network import MLPClassifier
 import numpy as np
 import math
-import matplotlib.pyplot as plt
 from sklearn.metrics import f1_score, precision_score, recall_score, classification_report,accuracy_score
 
 x = loadmat('/media/yasin/912d5d0f-5c5b-494b-bb8c-245aed208848/home/yasin/washingtonData/parkinsonFeatures/parkinsonClassificationFeaturesNormal.mat')
@@ -15,13 +14,18 @@ feats = x['features']
 
 x = loadmat('/media/yasin/912d5d0f-5c5b-494b-bb8c-245aed208848/home/yasin/washingtonData/parkinsonFeatures/parkinsonClassificationLabels.mat')
 labs = (x['labels'])
+
 x = loadmat('/media/yasin/912d5d0f-5c5b-494b-bb8c-245aed208848/home/yasin/washingtonData/parkinsonFeatures/mrmrForParkinsonClassificationFeatures.mat')
 selFeat = (x['featFCD'])
+
 allPred = []
 numFeat = [3,4,5,10,15,20,40,80,100,200,400,800,1000,1200,1500,2000,2200]
+
 trainFeats, devFeats, trainLabs, devLabs = train_test_split(
      feats, labs, test_size=0.1, random_state=0)
+
 selFeat -= 1
+
 for j in range(0, len(numFeat)):
 
 
